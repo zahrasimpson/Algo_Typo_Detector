@@ -1,0 +1,3 @@
+C:/Users/Bhavika S/Documents/USF/USF Summer 2017/Algorithms/Typo_Detector/cmake-build-debug/CMakeFiles/Typo_Detector.dir
+C:/Users/Bhavika S/Documents/USF/USF Summer 2017/Algorithms/Typo_Detector/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Bhavika S/Documents/USF/USF Summer 2017/Algorithms/Typo_Detector/cmake-build-debug/CMakeFiles/rebuild_cache.dir
