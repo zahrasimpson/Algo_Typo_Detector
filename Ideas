@@ -13,6 +13,8 @@ Your answer should include how the solution to the original problem is construct
 Since we know the certain types of typos that need to be identified we can run through the entire sting when 
 you encounter a difference we should run the function that identifies the difference AND the cost. 
 
+
+08/07/2017
 ------------------------------
 In std dynamic programming has two phases the forward phase and the backward phase. 
 In the forward phase, we compute the cost for each subproblem. 
@@ -25,10 +27,14 @@ Then we can go into the matrix and reconstruct the path,
 Recurrence Relation: cost(An,Bm), where A and B are our strings and n, m represent the positions within the string. 
 An and Bm are the last characters within the strings.
 
+We can store the if statements with each individual case of substitution, deletion, insertion, and transposition 
+within functions for each of those 4 cases.
+
 cost(An,Bm) = minimum(
   cost(An-1,Bm-1) + substitution(An,Bm);
   cost(An,Bm-1)   + insertion(Bm);
   cost(An-1,Bm)   + deletion(An);
+  cost(An-2,Bm-2) + transposition(An,Bm);
 )
 
 Base Case:  empty strings.
