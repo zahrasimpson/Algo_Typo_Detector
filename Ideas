@@ -1,0 +1,14 @@
+Algo Project 
+
+Qwerty Keyboard 
+4 rows, 10 columns 
+
+General idea: map every key to an interger via a character array -> 40 keys mapped, associative hash map (table) 
+Basic To do List 
+Test code to test basic cases of inserting, deleting, substituting, 
+
+
+1. How you can break down a large problem instance into one or more smaller instances? 
+Your answer should include how the solution to the original problem is constructed from the sub- problems.
+Since we know the certain types of typos that need to be identified we can run through the entire sting when you encounter a difference we 
+should run the function that identifies the difference AND the cost. 
