@@ -10,5 +10,25 @@ Test code to test basic cases of inserting, deleting, substituting,
 
 1. How you can break down a large problem instance into one or more smaller instances? 
 Your answer should include how the solution to the original problem is constructed from the sub- problems.
-Since we know the certain types of typos that need to be identified we can run through the entire sting when you encounter a difference we 
-should run the function that identifies the difference AND the cost. 
+Since we know the certain types of typos that need to be identified we can run through the entire sting when 
+you encounter a difference we should run the function that identifies the difference AND the cost. 
+
+------------------------------
+In std dynamic programming has two phases the forward phase and the backward phase. 
+In the forward phase, we compute the cost for each subproblem. 
+In the backward phase, we reconstruct the solution that gives the optimal cost. 
+
+------------------------------
+The cost will be stored in the matrix, making sure to only go through the string once. 
+Then we can go into the matrix and reconstruct the path, 
+------------------------------
+Recurrence Relation: cost(An,Bm), where A and B are our strings and n, m represent the positions within the string. 
+An and Bm are the last characters within the strings.
+
+cost(An,Bm) = minimum(
+  cost(An-1,Bm-1) + substitution(An,Bm);
+  cost(An,Bm-1)   + insertion(Bm);
+  cost(An-1,Bm)   + deletion(An);
+)
+
+Base Case:  empty strings.
