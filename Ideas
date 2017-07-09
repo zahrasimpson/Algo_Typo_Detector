@@ -38,3 +38,32 @@ cost(An,Bm) = minimum(
 )
 
 Base Case:  empty strings.
+
+How you can break down a large problem instance into one or more smaller instances? Your answer should include how the solution to the original problem is constructed from the sub- problems. 
+The first question that needs to be realized is whether the problem has an overlapping substructure.
+We can break up the problem by first comparing the two strings and analyzing the various costs and storing those costs in a 2D matrix.
+The second part of the problem will require us to name the typos and where they occur in the typo string. 
+This can be done with dynamic programming, since the optimal costs have already been stored in the matrix, instead of traversing through
+the strings and comparing each character again to discover what typo is present, we can work backwards within the matrix 
+to reconstruct the decisions made at every step along the optimal path within the matrix to discover the typo that lead to that cost. 
+
+
+What should the parameters be for your recursive function? 
+We need a recursive function to go through the previously calculated optimal cost within the matrix and retrace our
+steps to decide what typo is present within the string based on the cost. 
+
+What recurrence can you use to model this problem using dynamic programming? 
+What are the base cases of this recurrence? 
+If both strings are empty, we know we will not need to calculate costs, and there will be no changes within the two strings.
+If the target is an empty string, then we are not able to compare the typo strong to anything. 
+
+What data structure would you use to recognize repeated problems? You should describe both the abstract data structure, as well as its implementation. 
+Give pseudocode for a memoized dynamic programming algorithm to solve the problem. Your pseudocode should not describe how to compute the cost for each possible typo. 
+
+What is the worst-case time complexity of your memoized algorithm?
+Give a set of nested loops that could be used in an iterative dynamic programming solution 
+to this problem. 
+Can the space complexity of the iterative algorithm be improved relative to the memoized algorithm? Justify your answer. 
+Describe at least one advantage and disadvantage of the iterative algorithm, and indicate which implementation you believe is better overall. 
+
+
