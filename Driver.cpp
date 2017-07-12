@@ -60,7 +60,7 @@ buttons keys[4][10]; 	    //2D matrix of keys on keyboard - standard
             fingerPosition = 3;
         else
             fingerPosition = 9 - column;
-        
+    }    
         
 }       
 
