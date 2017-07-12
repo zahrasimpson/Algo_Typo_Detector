@@ -1,3 +1,5 @@
+//CAN WE MAKE THIS INTO A HEADER FILE? :D 
+
 #include <fstream>
 #include <iostream>
 #include <string>
