@@ -31,9 +31,44 @@ typedef struct {
 
 buttons keys[4][10]; 	    //2D matrix of keys on keyboard - standard
  
- //function to initialise all of the keys
- void initialiseKey()
- {
+row_init(int i)
+{
+	m[0][i].cost = i;
+	if (i>0)
+		m[0][i].parent = INSERT;
+	else
+		m[0][i].parent = -1;
+}
+
+column_init(int i)
+{
+	m[i][0].cost = i;
+	if (i>0)
+		m[i][0].parent = DELETE;
+	else
+		m[i][0].parent = -1;
+}
+
+int match(char c, char d)
+{
+	if (c == d) return(0);
+	else return(1);
+}
+
+int indel(char c)
+{
+	return(1);
+}
+
+goal_cell(char *s, char *t, int *i, int *j)
+{
+	*i = strlen(s) - 1;
+	*j = strlen(t) - 1;
+}
+
+//function to initialise all of the keys
+void initialiseKey()
+{
     int row = 0;
     int column = 0;
     bool hand = 0; 
@@ -63,5 +98,46 @@ buttons keys[4][10]; 	    //2D matrix of keys on keyboard - standard
     }    
         
 }       
+ 
 
+int string_compare(char *s, char *t)
+{
+	int i,j,k; 	/* counters */
+	int opt[3];	/* cost of the three options */
+	
+	for (i=0; i<MAXLEN; i++) 
+	{
+		row_init(i);
+		column_init(i);
+	}
+
+	for (i=1; i<strlen(s); i++) 
+	{
+		for (j=1; j<strlen(t); j++) 
+		{
+			opt[MATCH] = m[i-1][j-1].cost + match(s[i],t[j]);
+			opt[INSERT] = m[i][j-1].cost + indel(t[j]);
+			opt[DELETE] = m[i-1][j].cost + indel(s[i]);
+
+			m[i][j].cost = opt[MATCH];
+			m[i][j].parent = MATCH;
+			for (k=INSERT; k<=DELETE; k++)
+				if (opt[k] < m[i][j].cost) 
+				{
+					m[i][j].cost = opt[k];
+					m[i][j].parent = k;
+				}
+		}
+	}
+	goal_cell(s,t,&i,&j);
+	return( m[i][j].cost );
+}
+
+int main ()
+{ 
+    takeInputs();
     
+    cout << loopCount << endl << target << endl << typo;
+    return 0;
+
+}
