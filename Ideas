@@ -38,3 +38,23 @@ cost(An,Bm) = minimum(
 )
 
 Base Case:  empty strings.
+
+
+-----------------------
+
+Notes from video:
+if they aren't the same, we take the minumum of left right and top diagonal and then add one.
+diagonal means: converting character from one to another
+diagonal and same: no action
+left: deleted the character
+
+
+ACTION ITEMS:
+**Bee will help Kathy with the functions:
+
+    functions to be done:
+      inserting, deleting, subs., transposing
+    Min function**
+    Instantiating matrix and creating same and diff hand object/variables
+    Distance function
+      **Kathy has in her code**
