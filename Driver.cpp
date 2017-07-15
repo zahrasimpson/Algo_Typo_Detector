@@ -30,12 +30,6 @@ typedef struct {
 } buttons;
 
 buttons keys[4][10]; 	    //2D matrix of keys on keyboard - standard
-
-// //for the distance function to return the key locations to we can calculate the difference
-// typedef struct {
-//     int row;
-//     int col;
-// } keyLocation;
  
 row_init(int i)
 {
@@ -72,9 +66,9 @@ goal_cell(char *s, char *t, int *i, int *j)
 	*j = strlen(t) - 1;
 }
 
-//function to initialise all of the keys
-void initialiseKey()
-{
+ //function to initialise all of the keys
+ void initialiseKey()
+ {
     int row = 0;
     int column = 0;
     bool hand = 0; 
@@ -101,65 +95,10 @@ void initialiseKey()
             fingerPosition = 3;
         else
             fingerPosition = 9 - column;
-        
-        keys[row][column].row = row;
-        keys[row][column].column = column;
-        keys[row][column].hand = hand;
-        keys[row][column].fingerPosition = fingerPosition;
-        keys[row][column].key = chars[i];
     }    
         
-}    
+} 
 
-//  //distance function using the formula that was given to us in proj guidelines 
-// int keyDist (char firstPos, char secondPos)
-// {
-//     int rowDist = abs(getKeyLocation(secondPos).row - getKeyLocation(firstPos).row);
-//     int colDist = abs(getKeyLocation(secondPos).col - getKeyLocation(firstPos).col);
-    
-//     if (rowDist > colDist)
-//         return rowDist;
-//     return colDist;
-// }
-
-// buttons getKeyLocation(char key)
-// {
-//     return keys[row][col];
-
-void printCostTable()
-{
-    cout<<endl;
-    for (int i = 0; i < MAXLEN+1; i++){
-        for (int j = 0; j < MAXLEN+1; j++){
-            printf("%.2d ", m[i][j].cost);
-        }
-    cout<<endl;
-}
-
-//taken from the book code, we have to change the function names/vars to match our code
-void reconstruct_path(char *s, char *t, int i, int j)
-{
-/*printf("trace (%d,%d)\n",i,j);*/
-
-	if (m[i][j].parent == -1) return;
-
-	if (m[i][j].parent == MATCH) {
-		reconstruct_path(s,t,i-1,j-1);
-		match(s, t, i, j);
-		return;
-	}
-        if (m[i][j].parent == INSERT) {
-                reconstruct_path(s,t,i,j-1);
-		insert(t,j);
-		return;
-        }
-        if (m[i][j].parent == DELETE) {
-                reconstruct_path(s,t,i-1,j);
-		delete(s,i);
-		return;
-        }
-}        
-                      
 int string_compare(char *s, char *t)
 {
 	int i,j,k; 	/* counters */
@@ -193,14 +132,15 @@ int string_compare(char *s, char *t)
 	return( m[i][j].cost );
 }
 
+
+
+
 int main ()
 { 
     takeInputs();
     
     cout << loopCount << endl << target << endl << typo;
-    int cost = string_compare(typo, target);
-    printCostTable();
-    
     return 0;
 
 }
+
